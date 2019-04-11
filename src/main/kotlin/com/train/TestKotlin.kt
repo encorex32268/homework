@@ -4,20 +4,41 @@ import java.util.*
 
 fun main(args: Array<String>) {
 
-    val scanner = Scanner(System.`in`)
-    print("Please enter number of tickets: ")
-    var tickets = try { scanner.nextInt() }catch (e :InputMismatchException){ 0 }
-    if (tickets == 0){
-        println("Tickets is 0 . Exit .")
-    }else{
-        print("How many round-trip tickets: ")
-        var roundtripTickets = try { scanner.nextInt() }catch (e :InputMismatchException){ 0 }
-        if (tickets < roundtripTickets){
-            println("Error - roundTrip more than the total ticket")
+    var tickets = 0
+
+    while (tickets != -1)
+    {
+        val scanner = Scanner(System.`in`)
+        println("----------Start----------")
+        print("Please enter number of tickets: ")
+        tickets = try { scanner.nextInt() }catch (e :InputMismatchException){ 0 }
+        if (tickets == -1) {
+            println("Exit")
+            println("-----------End-----------")
+            break
+        }
+        else if (tickets <= 0){
+            println("!! Error - Please enter correct tickets count !!")
+            println("-----------End-----------")
         }else{
-            Ticket(tickets,roundtripTickets).printTotal()
+            print("How many round-trip tickets: ")
+            var roundtripTickets = try { scanner.nextInt() }catch (e :InputMismatchException){ 0 }
+            if (roundtripTickets < 0){
+                println("Please enter correct Round-trip count")
+                println("-----------End-----------")
+            }else{
+                if (tickets < roundtripTickets){
+                    println("!! Error - roundTrip more than the total ticket !!")
+                    println("-----------End-----------")
+                }else{
+                    Ticket(tickets,roundtripTickets).printTotal()
+                    println("-----------End-----------")
+                }
+            }
+
         }
     }
+
 
 
 }
