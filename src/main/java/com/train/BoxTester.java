@@ -16,11 +16,11 @@ public class BoxTester {
         int height = scanner.nextInt();
 
         Box3 box3 = new Box3();
+        Box5 box5 = new Box5();
+
         if (box3.validate(length,width,height)){
             System.out.println("Box3");
-        }
-        Box5 box5 = new Box5();
-        if (box5.validate(length,width,height)){
+        }else if (box5.validate(length,width,height)){
             System.out.println("Box5");
         }
 

@@ -10,11 +10,11 @@ fun main(args: Array<String>) {
         val width:Float =  try { scanner.nextFloat() } catch (e:InputMismatchException){ 0f }
         print("Please enter object's height: ")
         val height =  try { scanner.nextInt() } catch (e:InputMismatchException){ 0 }
-        if (Box3().validate(length,width,height)){
-            println("Box3")
-        }
-        if (Box5().validate(length,width,height)){
-            println("Box5")
+
+        when{
+            Box3().validate(length,width,height) -> println("Box3")
+            Box5().validate(length,width,height) -> println("Box5")
+
         }
 }
 class Box3 : Box(mLength = 23f,mWidth = 14f,mHeight = 13)
